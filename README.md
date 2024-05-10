@@ -5,7 +5,7 @@ Inverse Problems, 36 (2020).
 
 Goal of RESESOP-Kaczmarz: Find solution f of multiple linear inverse problems $A_i f = g_i$.
 Setting: Only noisy versions of g_i are available $||g_i - g_i^\delta|| < \delta_i$ (L2-norm).
-         Further, there may be only be access to inexact versions of forward operators: $||A_i - A_i^\eta|| \leq \eta_i$ (operator norm).
+         Further, there may be only be access to inexact versions $A_i^\eta$ of forward operators: $||A_i - A_i^\eta|| \leq \eta_i$ (operator norm).
 
 This implementation has been used in the article:
 J. Gödeke and G. Rigaud;
