@@ -4,7 +4,7 @@ authors:
 - family-names: "Janek"
   given-names: "Gödeke"
   orcid: "https://orcid.org/0000-0002-4633-6963"
-title: "RESESOP-Kaczmarz method"
+title: "Implementation of RESESOP-Kaczmarz method"
 version: 1
 date-released: 2024-05-10
 url: "https://github.com/kenaj123/RESESOP"
