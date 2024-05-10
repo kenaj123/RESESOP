@@ -1,4 +1,4 @@
-Implements the RESESOP-Kaczmarz method presented in the article:
+Implementation of the RESESOP-Kaczmarz method presented in the article:
 S. Blanke, B. Hahn and A. Wald; 
 Inverse problems with inexact forward operator: Iterative regularization and application in dynamic imaging;
 Inverse Problems, 36 (2020).
