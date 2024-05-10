@@ -8,9 +8,29 @@ from .geometry import (
 )
 
 
+class Resesop_Regularizer():
+    '''
+        Implements the RESESOP-Kaczmarz method presented in the article:
+        S. Blanke, B. Hahn and A. Wald; 
+        Inverse problems with inexact forward operator: Iterative regularization and application in dynamic imaging;
+        Inverse Problems, 36 (2020).
 
-class resesop_regularizer():
+        Goal of RESESOP-Kaczmarz: Find solution f of multiple inverse problems A_i f = g_i.
+        Setting: Only noisy versions of g_i are available ||g_i - g_i^delta|| < delta_i (L2-norm).
+                 Only inexact version of forward operators available: ||A_i - A_i^eta|| < eta_i (operator norm).
+    '''
     def __init__(self, operators, adjoints, number_operators, g, etas, deltas, f0 = None, groundtruth=None):
+        '''
+            operators - function that gets an index i and some x as an input and returns A_i^eta evaluated at x.
+            adjoints - funtion that gets y and index i as an input and returns adjoint of A_i^eta evaluated at y.
+            g - list or numpy arrary with all g_i.
+            etas - model uncertainty/discrepancy between A_i and A_i^eta.
+            deltas - noise level between g_i and g_i^delta.
+            number_operators - total amount of operators A_i.
+            f0 - numpy array specifying the start iterate.
+            groundtruth - for testing it might be interesting to check how close the current iterate is to the actual groundtruth.
+            errors - If desired, errors between groundtruth and current iterate can be stored at each iteration step.
+        '''
         self.operators = operators
         self.adjoints  = adjoints
         self.g         = g
@@ -28,8 +48,9 @@ class resesop_regularizer():
         
     def set_up_subproblems(self, operators, adjoints, number_operators, g, etas, deltas):
         """
-            operators(k, x) yields the kth operator evaluated at x,
-            g[k] is the right-hand-side of the respective subproblem.
+            New set-up can be specified without calling self.__init__ again.
+            operators(i, x) yields the operator A_i^eta evaluated at x,
+            g[i] is the right-hand-side of the respective subproblem.
         """
         self.operators = operators
         self.adjoints  = adjoints
@@ -40,7 +61,17 @@ class resesop_regularizer():
    
 
     def resesop_one_search_direction(self, rho, tau=1.00001, sweeps=50, f0=None, compute_errors=False):
-
+        '''
+            RESESOP method where at each iteration a projection onto a single stripe is proceeded. 
+            
+            Regularization parameters to be specified:
+            rho - Upper bound for the norm of the groundtruth f of the inverse problems.
+            tau - should be larger than 1.
+            For stability of the algorithm it should hold that || A_i^eta f - g_i || <= tau * (eta_i * rho + delta_i).
+            
+            Algorithmic parameteters:
+            sweeps - Number of Kaczmarz-sweeps, i.e. number of times each subproblem A_i f = g_i gets considered for an iteration step.
+        '''
         n = self.number_operators
         
         if f0 is None:
@@ -86,7 +117,9 @@ class resesop_regularizer():
     
     
     def resesop_two_search_directions(self, rho, tau=1.000001, sweeps=50, f0=None, compute_errors=False):
-
+        '''
+            Sometimes considering two search directions (projecting the current iterate f_n onto intersection of two stripes) can speed up the algorithm.
+        '''
         if f0 is None:
             if self.f0 is None:
                 raise ValueError('f0 must be set!')
