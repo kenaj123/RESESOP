@@ -8,7 +8,7 @@ S. Blanke, B. Hahn and A. Wald;
 Inverse problems with inexact forward operator: Iterative regularization and application in dynamic imaging;
 Inverse Problems, 36 (2020). 
 
-Second, we present a differentiable loss function that can be used to train a Deep Image Prior, while taking into account the discrepancy between the inexact and exact forward operators $A^\eta$ and $A$, respectively. As a recall, the DIP approach seeks for a neural network $\varphi_\theta$ that maps a given random prior $z$ to the solution $f$ of the inverse problem(s) $A_i f = g^\delta_i$. Since only inexact versions $A^\eta_i$ of $A_i$ are available, we propose to train $\varphi_\theta$ by minimizing the following loss-function:
+Second, we present a differentiable loss function that can be used to train a Deep Image Prior, while taking into account the discrepancy between the inexact and exact forward operators $A_i^\eta$ and $A_i$, respectively. As a recall, the DIP approach seeks for a neural network $\varphi_\theta$ that maps a given random prior $z$ to the solution $f$ of the inverse problem(s) $A_i f = g^\delta_i$. Since only inexact versions $A^\eta_i$ of $A_i$ are available, we propose to train $\varphi_\theta$ by minimizing the following loss-function:
 
 $\frac{1}{n} \sum_{i=1}^n \Big\vert \vert A_i^\eta \varphi_\theta(z) - g_i^\delta \vert^2 - c_i \Big\vert^2$
 
