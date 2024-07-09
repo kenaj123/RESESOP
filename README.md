@@ -16,9 +16,6 @@ Furthermore, a Deep Image Prior approach is implemented, for solving inverse pro
 A neural network $\varphi_\theta$ is considered that should map a random input $z$ to the solution $f$ of the inverse problems $A_i f = g_i$.
 Since only an inexact versions $A^\eta_i$ of $A_i$ are available, we propose to train $\varphi_\theta$ to minimize the following loss-function:
 ![$\sum_{i=1}^n \Vert \vert A_i^\eta \varphi_\theta(z) - g^\delta \vert^2 - c \Vert^2,$ ](https://quicklatex.com/cache3/5b/ql_b587e4c6edd88f5fa4205bff01dd7b5b_l3.png)
-\begin{align}
-asd
-\end{align}
 where $c$ is some discrepancy term describing the model uncertainty between $A$ and $A^\eta$.
 
 Also this implementation has been used in the article:
