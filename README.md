@@ -10,7 +10,7 @@ Inverse Problems, 36 (2020).
 
 Second, we present a differentiable loss function that can be used to train a Deep Image Prior, while taking into account the discrepancy between the inexact and exact forward operators $A_i^\eta$ and $A_i$, respectively. As a recall, the DIP approach seeks for a neural network $\varphi_\theta$ that maps a given random prior $z$ to the solution $f$ of the inverse problem(s) $A_i f = g^\delta_i$. Since only inexact versions $A^\eta_i$ of $A_i$ are available, we propose to train $\varphi_\theta$ by minimizing the following loss-function:
 
-$\frac{1}{n} \sum _{i=1}^{n} \Big\vert \vert A_i^\eta \varphi_\theta(z) - g_i^\delta \vert^2 - c_i \Big\vert^2$
+$\frac{1}{n} \sum_{i=1 \ldots n} \Big\vert \vert A_i^\eta \varphi_\theta(z) - g_i^\delta \vert^2 - c_i \Big\vert^2$
 
 where $c\in \mathbb{R}^n_{\geq 0}$ is some discrepancy term describing the model uncertainty between $A_i$ and $A_i^\eta$. Ideally, $c_i^2$ should be close to $\vert A_i f - g_i^\delta \vert^2$.
 
