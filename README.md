@@ -15,7 +15,7 @@ Inverse Problems, 39 (2023).
 Furthermore, a Deep Image Prior approach is implemented, for solving inverse problems with inexact forward operators:
 A neural network $\varphi_\theta$ is considered that should map a random input $z$ to the solution $f$ of the inverse problems $A_i f = g_i$.
 Since only an inexact versions $A^\eta_i$ of $A_i$ are available, we propose to train $\varphi_\theta$ to minimize the following loss-function:
-$\bigsum_{i=1}^n \Vert \vert A_i^\eta \varphi_\theta(z) - g^\delta \vert^2 - c \Vert^2,$ where $c$ is some discrepancy term describing the model uncertainty between $A$ and $A^\eta$.
+$\sum \Vert \vert A_i^\eta \varphi_\theta(z) - g^\delta \vert^2 - c \Vert^2,$ where $c$ is some discrepancy term describing the model uncertainty between $A$ and $A^\eta$.
 
 Also this implementation has been used in the article:
 J. Gödeke and G. Rigaud;
