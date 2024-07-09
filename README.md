@@ -14,7 +14,7 @@ Inverse problems with inexact forward operator: Iterative regularization and app
 Inverse Problems, 36 (2020).
 
 Second, a Deep Image Prior approach is implemented, for tackling inverse problems with inexact forward operators:
-As a recall, the DIP approach seeks for a neural network that maps a given random prior $z$ to the solution $f$ of the inverse problem(s) $A_i f = g^\delta_i$. Since only inexact versions $A^\eta_i$ of $A_i$ are available, we propose to train $\varphi_\theta$ by minimizing the following loss-function:
+As a recall, the DIP approach seeks for a neural network $\varphi_\theta$ that maps a given random prior $z$ to the solution $f$ of the inverse problem(s) $A_i f = g^\delta_i$. Since only inexact versions $A^\eta_i$ of $A_i$ are available, we propose to train $\varphi_\theta$ by minimizing the following loss-function:
 
 $\frac{1}{n} \sum_{i=1}^n \Big\vert \vert A_i^\eta \varphi_\theta(z) - g_i^\delta \vert^2 - c_i \Big\vert^2$
 
