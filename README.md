@@ -1,4 +1,4 @@
-1) Implementation of the RESESOP-Kaczmarz method presented in the article:
+Implementation of the RESESOP-Kaczmarz method presented in the article:
 S. Blanke, B. Hahn and A. Wald; 
 Inverse problems with inexact forward operator: Iterative regularization and application in dynamic imaging;
 Inverse Problems, 36 (2020).
@@ -12,12 +12,11 @@ J. Gödeke and G. Rigaud;
 Imaging based on Compton scattering: model uncertainty and data-driven reconstruction methods;
 Inverse Problems, 39 (2023).
 
-2) A Deep Image Prior approach for solving inverse problems with inexact forward operators:
+Furthermore, a Deep Image Prior approach is implemented, for solving inverse problems with inexact forward operators:
 A neural network $\varphi_\theta$ is considered that should map a random input $z$ to the solution $f$ of the inverse problems $A_i f = g_i$.
 Since only an inexact versions $A^\eta_i$ of $A_i$ are available, we propose to train $\varphi_\theta$ to minimize the following loss-function:
-$$
-as
-$$
+$\frac{1}{n}\sum_{i=1}^n \Vert \vert A_i^\eta \varphi_\theta(z) - g^\delta \vert^2 - c \Vert^2,$ where $c$ is some discrepancy term describing the model uncertainty between $A$ and $A^\eta$.
+
 Also this implementation has been used in the article:
 J. Gödeke and G. Rigaud;
 Imaging based on Compton scattering: model uncertainty and data-driven reconstruction methods;
